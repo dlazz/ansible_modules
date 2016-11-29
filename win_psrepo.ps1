@@ -25,7 +25,7 @@ $params = Parse-Args $args;
 
 $name = Get-Attr $params "name" -failifempty $true;
 $url = Get-Attr $params "url";
-$state = Get-Attr $params "state"  -default "present";
+$state = Get-Attr $params "state" -ValidateSet "Present","Absent"  -default "present";
 $result = New-Object PSObject @{"changed" = $false; "output" = ""};
 
 

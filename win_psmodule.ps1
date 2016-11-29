@@ -24,7 +24,7 @@
 
 $params = Parse-Args $args;
 $name = Get-Attr $params "name" -failifempty $true;
-$state = Get-Attr $params "state"  -default "present";
+$state = Get-Attr $params "state" -ValidateSet "present","absent" -default "present";
 $result = New-Object PSObject @{"changed" = $false; "output" = ""};
 
 Function Install-PsModule{
