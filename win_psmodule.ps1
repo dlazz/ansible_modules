@@ -23,9 +23,9 @@
 
 
 $params = Parse-Args $args;
-$name = Get-Attr $params "name" -failifempty $true;
-$state = Get-Attr $params "state" -ValidateSet "present","absent" -default "present";
-$result = New-Object PSObject @{"changed" = $false; "output" = ""};
+$name = Get-AnsibleParam $params "name" -failifempty $true;
+$state = Get-AnsibleParam $params "state" -ValidateSet "present","absent" -default "present";
+$result = Get-AnsibleParam PSObject @{"changed" = $false; "output" = ""};
 
 Function Install-PsModule{
     param(
@@ -38,7 +38,7 @@ Function Install-PsModule{
     else {
       try{
         Install-Module -Name $name
-        $result.output = "Module Installed"
+        $result.output = "Module installed"
         $result.changed = $True
       }
       catch{
