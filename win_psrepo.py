@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# (c) 2016, Jon Hawkesworth (@jhawkesworth) <figs@unity.demon.co.uk>
+# (c) 2016, Daniele Lazzari  <lazzari@mailup.com>
 #
 # This file is part of Ansible
 #
@@ -24,7 +24,7 @@
 DOCUMENTATION = '''
 ---
 module: win_psrepo
-version_added: "0.1"
+version_added: "2.3"
 short_description: register or remove a powershell trusted repository
 description:
     - Register or remove powershell trusted repository. It can be usedo to add private repo to
@@ -38,14 +38,14 @@ options:
   url:
     description:
       - url of the repository
-    required: false if state is absent
+    required: false
     default: none
   state:
     description:
       - present or absent
     required: false
     default: present
-
+'''
 
 EXAMPLES = '''
   # Add a new Ps Repo
@@ -58,3 +58,7 @@ EXAMPLES = '''
 - win_psrepo:
     name: WinRepo
     state: absent
+'''
+
+RETURN = '''
+'''

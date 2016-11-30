@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# (c) 2016, Jon Hawkesworth (@jhawkesworth) <figs@unity.demon.co.uk>
+# (c) 2016, Daniele Lazzari (@jhawkesworth) <lazzari@mailup.com>
 #
 # This file is part of Ansible
 #
@@ -24,7 +24,7 @@
 DOCUMENTATION = '''
 ---
 module: win_psmodule
-version_added: "0.1"
+version_added: "2.3"
 short_description: Install or remove a powershell module from a trusted repository
 description:
     - Install or remove a powershell module from a trusted repository. Powershell 5.0 is needed
@@ -39,7 +39,7 @@ options:
       - present or absent
     required: false
     default: present
-
+'''
 
 EXAMPLES = '''
   # Add a powershell module
@@ -53,3 +53,6 @@ EXAMPLES = '''
 - win_psmodule:
     name: MyCustomModule
     state: absent
+'''
+RETURN = '''
+'''
