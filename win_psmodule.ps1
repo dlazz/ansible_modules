@@ -19,13 +19,13 @@
 # WANT_JSON
 # POWERSHELL_COMMON
 
-# win_psmodule (Poertshell Module Additions/Removal)
+# win_psmodule (Powershell Module Additons/Removal)
 
 
 $params = Parse-Args $args;
 $name = Get-AnsibleParam $params "name" -failifempty $true;
 $state = Get-AnsibleParam $params "state" -ValidateSet "present","absent" -default "present";
-$result = Get-AnsibleParam PSObject @{"changed" = $false; "output" = ""};
+$result = New-Object PSObject @{"changed" = $false; "output" = ""};
 
 Function Install-PsModule{
     param(
