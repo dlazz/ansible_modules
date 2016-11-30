@@ -23,9 +23,9 @@
 
 $params = Parse-Args $args;
 
-$name = Get-Attr $params "name" -failifempty $true;
-$url = Get-Attr $params "url";
-$state = Get-Attr $params "state" -ValidateSet "Present","Absent"  -default "present";
+$name = Get-AnsibleParam $params "name" -failifempty $true;
+$url = Get-AnsibleParam $params "url";
+$state = Get-AnsibleParam $params "state" -ValidateSet "present","absent"  -default "present";
 $result = New-Object PSObject @{"changed" = $false; "output" = ""};
 
 
@@ -37,7 +37,10 @@ Function Install-Repository{
     [string]$url
     )
     $Repo = (Get-PSRepository).SourceLocation
-
+    if (!($url)){
+        $result.output = "The repository url is needed"
+        Fail-Json $result
+    }
     if ($Repo -notcontains $url){
       if (!(Get-PackageProvider -Name NuGet|out-null)){
         try{
